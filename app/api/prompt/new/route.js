@@ -16,12 +16,9 @@ export const POST = async (req) => {
 
     await newPrompt.save();
 
-    return new NextResponse.json(JSON.stringify(newPrompt), { status: 201 });
+    return new NextResponse(JSON.stringify(newPrompt), { status: 201 });
   } catch (error) {
     console.log(error);
-    return new NextResponse.json(
-      { error: "Error Creating Post" },
-      { status: 500 }
-    );
+    return new NextResponse({ error: "Error Creating Post" }, { status: 500 });
   }
 };

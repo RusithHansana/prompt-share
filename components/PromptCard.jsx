@@ -50,7 +50,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
                     />
                 </div>
             </div>
-            <p className="my-4 font-inter text-sm text-gray-700">{post.prompt}</p>
+            <div className="my-4 font-inter text-sm text-gray-700">{post.prompt}</div>
             <p
                 className="font-inter text-sm blue_gradient cursor-pointer"
                 onClick={() => handleTagClick && handleTagClick(post.tag)}

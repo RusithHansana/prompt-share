@@ -19,6 +19,7 @@ const PromptCardList = ({ data, handleTagClick }) => {
 const Feed = () => {
     const [searchText, setSearchText] = useState("");
     const [posts, setPosts] = useState([]);
+    const [filteredPosts, setFilteredPosts] = useState([]);
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
 
@@ -49,8 +50,6 @@ const Feed = () => {
                 document.documentElement.offsetHeight)
             && hasMore)
             fetchPosts();
-
-
     };
 
     useEffect(() => {
@@ -60,7 +59,27 @@ const Feed = () => {
 
     const handleSearchChange = (e) => {
         e.preventDefault();
-        setSearchText(e.target.value);
+        const searchValue = e.target.value.toLowerCase();
+        setSearchText(searchValue);
+
+        if (searchValue !== "") {
+            const filtered = posts.filter(post => {
+                return (
+                    post.tag.toLowerCase().includes(searchValue) ||
+                    post.creator.username.toLowerCase().includes(searchValue)
+                );
+            });
+
+            setFilteredPosts(filtered);
+        } else {
+            setFilteredPosts([]);
+        }
+    }
+
+    const handleTagClick = (tag) => {
+        setSearchText(tag);
+        const filtered = posts.filter(post => post.tag.toLowerCase() === tag.toLowerCase());
+        setFilteredPosts(filtered);
     }
 
     return (
@@ -68,7 +87,7 @@ const Feed = () => {
             <form className="relative w-full flex-center">
                 <input
                     type="text"
-                    placeholder="Search for user or tags"
+                    placeholder="Search for tags, or users"
                     value={searchText}
                     onChange={handleSearchChange}
                     required
@@ -77,8 +96,8 @@ const Feed = () => {
             </form>
 
             <PromptCardList
-                data={posts}
-                handleTagClick={() => { }}
+                data={filteredPosts.length > 0 ? filteredPosts : posts}
+                handleTagClick={handleTagClick}
             />
         </section>
     )

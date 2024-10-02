@@ -78,7 +78,7 @@ const Feed = () => {
 
     const handleTagClick = (tag) => {
         setSearchText(tag);
-        const filtered = posts.filter(post => post.tag.toLowerCase() === tag.toLowerCase());
+        const filtered = posts.filter(post => post.tags.includes(tag));
         setFilteredPosts(filtered);
     }
 

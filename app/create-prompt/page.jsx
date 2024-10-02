@@ -10,7 +10,7 @@ const CreatePrompt = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [post, setPost] = useState({
         prompt: "",
-        tag: "",
+        tags: "",
     });
 
     const router = useRouter();
@@ -22,15 +22,21 @@ const CreatePrompt = () => {
         setIsSubmitting(true);
 
         try {
+            const tags = post.tags.split(",")
+                .map(tag => tag.trim())
+                .filter(tag => tag !== "");
+
             const response = await fetch("/api/prompt/new",
                 {
                     method: "POST",
                     body: JSON.stringify({
                         userId: session?.user.id,
                         prompt: post.prompt,
-                        tag: post.tag,
+                        tags: tags,
                     }),
                 });
+
+
 
             if (response.ok) {
                 router.push("/");

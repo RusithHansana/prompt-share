@@ -36,7 +36,7 @@ const UserProfile = ({ params }) => {
         username ? (
             <Profile
                 name={`${username}'s`}
-                desc="Welcome to your profile"
+                desc={`Welcome to ${username}'s profile.`}
                 data={posts}
             />
         ) : (

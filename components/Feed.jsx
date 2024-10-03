@@ -79,15 +79,15 @@ const Feed = () => {
     // Use useCallback to memoize the handleTagClick function
     const handleTagClick = useCallback((tag) => {
         setSearchText(tag);
-    }, []);
+    }, [setSearchText]);
 
     // Use useMemo to compute filteredPosts
     const filteredPosts = useMemo(() => {
         if (searchText === "") return posts;
-        return posts.filter(post =>
-            post.tag.toLowerCase().includes(searchText) ||
-            post.creator.username.toLowerCase().includes(searchText)
-        );
+        return posts.filter(post => {
+            return post.tags.some(tag => tag.toLowerCase().includes(searchText.toLowerCase())) ||
+                post.creator.username.toLowerCase().includes(searchText.toLowerCase())
+        });
     }, [posts, searchText]);
 
     return (

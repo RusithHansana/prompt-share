@@ -1,5 +1,21 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# Prompt Share
+
+This project is a modern web application built using Next.js, a powerful React framework. It features a dynamic feed component that displays a collection of prompts or posts. The feed supports infinite scrolling, real-time search functionality, and efficient rendering through React's optimization techniques.
+
+## Key features of the project include:
+
+- **Infinite scrolling:** The feed automatically loads more posts as the user scrolls down the page.
+- **Search functionality:** Users can search for specific tags or usernames within the feed.
+- **Performance optimizations:** The project utilizes React hooks like `useCallback`, `useMemo`, and `React.memo` to enhance performance and prevent unnecessary re-renders.
+- **Responsive design:** The feed adapts to different screen sizes, providing a seamless experience across devices.
+- **Loading state management:** A `Suspense` component is used to display a loading state while fetching initial data.
+
+The project follows modern React best practices and leverages Next.js features for improved performance and SEO. It's set up for easy deployment on platforms like Vercel, making it simple to take the application from development to production.
+
+This application would be ideal for scenarios where users need to browse through a large collection of content, such as a social media feed, a content curation platform, or a collaborative idea-sharing space.
+
 ## Getting Started
 
 First, run the development server:

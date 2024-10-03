@@ -1,18 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 # Prompt Share
 
 This project is a modern web application built using Next.js, a powerful React framework. It features a dynamic feed component that displays a collection of prompts or posts. The feed supports infinite scrolling, real-time search functionality, and efficient rendering through React's optimization techniques.
 
 ## Key features of the project include:
 
-- **User authentication:** Users can log in with their Google accounts using NextAuth for easy and secure access.
-- **Post management:** Users can create, update, and delete their posts, and view their profiles as well as others' profiles.
 - **Infinite scrolling:** The feed automatically loads more posts as the user scrolls down the page.
 - **Search functionality:** Users can search for specific tags or usernames within the feed.
 - **Performance optimizations:** The project utilizes React hooks like `useCallback`, `useMemo`, and `React.memo` to enhance performance and prevent unnecessary re-renders.
 - **Responsive design:** The feed adapts to different screen sizes, providing a seamless experience across devices.
 - **Loading state management:** A `Suspense` component is used to display a loading state while fetching initial data.
+- **User authentication:** Users can log in with their Google accounts using NextAuth for easy and secure access.
+- **Post management:** Users can create, update, and delete their posts, and view their profiles as well as others' profiles.
 
 The project follows modern React best practices and leverages Next.js features for improved performance and SEO. It's set up for easy deployment on platforms like Vercel, making it simple to take the application from development to production.
 
@@ -20,7 +18,26 @@ This application would be ideal for scenarios where users need to browse through
 
 ## Getting Started
 
-First, run the development server:
+Before running the project, you need to add a `.env` file with the following environment variables:
+
+```
+MONGODB_URI=<your_mongodb_connection_string>
+GOOGLE_ID=<your_google_client_id>
+GOOGLE_CLIENT_SECRET=<your_google_client_secret>
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_URL_INTERNAL=http://localhost:3000
+NEXTAUTH_SECRET=<your_nextauth_secret>
+```
+
+To generate the `NEXTAUTH_SECRET`, run the following command in your terminal:
+
+```bash
+openssl rand -base64 32
+```
+
+For details on setting up Google authentication and environment variables, follow this [YouTube tutorial](https://www.youtube.com/watch?v=wm5gMKuwSYk&t=5508s) starting at the 1:20 timestamp.
+
+After adding the `.env` file, run the development server:
 
 ```bash
 npm run dev

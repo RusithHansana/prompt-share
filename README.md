@@ -6,6 +6,8 @@ This project is a modern web application built using Next.js, a powerful React f
 
 ## Key features of the project include:
 
+- **User authentication:** Users can log in with their Google accounts using NextAuth for easy and secure access.
+- **Post management:** Users can create, update, and delete their posts, and view their profiles as well as others' profiles.
 - **Infinite scrolling:** The feed automatically loads more posts as the user scrolls down the page.
 - **Search functionality:** Users can search for specific tags or usernames within the feed.
 - **Performance optimizations:** The project utilizes React hooks like `useCallback`, `useMemo`, and `React.memo` to enhance performance and prevent unnecessary re-renders.
